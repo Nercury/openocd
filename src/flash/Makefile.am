@@ -1,5 +1,7 @@
 noinst_LTLIBRARIES += %D%/libflash.la
 %C%_libflash_la_SOURCES = \
+  %D%/advanced_elf_image.c \
+	%D%/FLASHPlugin.c \
 	%D%/common.c %D%/common.h
 
 %C%_libflash_la_LIBADD = \

@@ -4,49 +4,39 @@ PREFIX=/c/OpenOCD
 # use 8 jobs
 PARALLEL=-j8
 
-# additional libs
-
-BASE=`pwd`
-ARTIFACTS=${BASE}/artifacts
-
-mkdir -p artifacts
-pushd artifacts
-
-if [ ! -f libsetupapi.a ]; then
-    wget https://github.com/msysgit/msysgit/raw/master/mingw/lib/libsetupapi.a
-fi
-
-popd
-
-# using mingw-w64-x86_64-hidapi-0.9.0-1-any from MSYS
-# pacman -Syy
-# pacman -Scc
-# pacman -Suu
-
-echo "# ==============================================================="
-echo "# openocd bootstrap"
-
-./bootstrap
-
-rm -rf build
-mkdir -p build
-
-echo "# ==============================================================="
-echo "# configuring openocd"
-
-./configure --prefix=${PREFIX} \
-    --enable-static \
-    --disable-shared \
-    --disable-gccwarnings \
-    --enable-remote-bitbang \
-    --enable-internal-jimtcl \
-    --disable-internal-libjaylink \
-    --enable-stlink \
-    CFLAGS="-O2 -fomit-frame-pointer --static -I${PREFIX}/include" \
-    LDFLAGS="--static ${ARTIFACTS}/libsetupapi.a -L${PREFIX}/lib"
+# echo "# ==============================================================="
+# echo "# openocd bootstrap"
+#
+# ./bootstrap
+#
+# echo "# ==============================================================="
+# echo "# configuring openocd"
+#
+# ./configure --prefix=${PREFIX} \
+#     --enable-static \
+#     --disable-shared \
+#     --disable-gccwarnings \
+#     --enable-remote-bitbang \
+#     --enable-internal-jimtcl \
+#     --disable-internal-libjaylink
+#
+# echo "# ==============================================================="
+# echo "# building openocd"
+#
+# make ${PARALLEL}
+#
+# echo "# ==============================================================="
+# echo "# installing openocd"
+#
+# make install
 
 echo "# ==============================================================="
-echo "# building openocd"
+echo "# copying shared libs (windows)"
 
-make ${PARALLEL}
-make install
+set -xe
+
+cp /mingw64/bin/libusb-1.0.dll ${PREFIX}/bin/libusb-1.0.dll
+cp /mingw64/bin/libusb-0-1-4.dll ${PREFIX}/bin/libusb-0-1-4.dll
+cp /mingw64/bin/libhidapi-0.dll ${PREFIX}/bin/libhidapi-0.dll
+cp /mingw64/bin/libjaylink-0.dll ${PREFIX}/bin/libjaylink-0.dll
+cp /mingw64/bin/libftdi1.dll ${PREFIX}/bin/libftdi1.dll
