@@ -10,14 +10,16 @@ Ensure you also checked out submodules with `git submodule update --init --recur
 In summary:
 
 ```
-pacman -S --noconfirm --needed autoconf automake git make \
-mingw-w64-i686-gcc \
-mingw-w64-i686-toolchain \
-mingw-w64-i686-libtool \
-mingw-w64-i686-pkg-config \
-mingw-w64-cross-winpthreads-git \
-p7zip
+pacman -S base-devel
 ```
+
+If we want to install the 32-bit version the command is
+
+`pacman -S mingw-w64-i686-toolchain`
+
+the 64-bit version requires this command
+
+`pacman -S mingw-w64-x86_64-toolchain`
 
 ### Run `./bootstrap`.
 
