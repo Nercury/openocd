@@ -581,7 +581,7 @@ static int stm32gx_write(struct flash_bank *bank, const uint8_t *buffer,
 		}
 		LOG_INFO("odd number of bytes to write, padding with 0xff");
 		buffer = memcpy(new_buffer, buffer, count);
-		for (int i = 0; i < pad_count; i++) 
+		for (int i = 0; i < pad_count; i++)
 			new_buffer[count++] = 0xff;
 	}
 
@@ -734,6 +734,10 @@ static int stm32x_probe(struct flash_bank *bank)
 		case 0x460: /* stm32g07x */
 			page_size = 2048;
 			max_flash_size_in_kb = 128;
+			break;
+		case 0x466: /* stm32g03x */
+			page_size = 2048;
+			max_flash_size_in_kb = 64;
 			break;
 		default:
 			LOG_WARNING("Cannot identify target as a STM32 family.");

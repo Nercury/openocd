@@ -20,15 +20,15 @@ PARALLEL=-j8
 #     --enable-internal-jimtcl \
 #     --disable-internal-libjaylink
 #
-# echo "# ==============================================================="
-# echo "# building openocd"
-#
-# make ${PARALLEL}
-#
-# echo "# ==============================================================="
-# echo "# installing openocd"
-#
-# make install
+echo "# ==============================================================="
+echo "# building openocd"
+
+make ${PARALLEL}
+
+echo "# ==============================================================="
+echo "# installing openocd"
+
+make install
 
 echo "# ==============================================================="
 echo "# copying shared libs (windows)"
