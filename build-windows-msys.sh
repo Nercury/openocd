@@ -19,7 +19,7 @@ echo "# configuring openocd"
     --enable-remote-bitbang \
     --enable-internal-jimtcl \
     --disable-internal-libjaylink
-#
+
 echo "# ==============================================================="
 echo "# building openocd"
 

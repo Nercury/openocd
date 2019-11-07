@@ -21,13 +21,22 @@ the 64-bit version requires this command
 
 `pacman -S mingw-w64-x86_64-toolchain`
 
-### Run `./bootstrap`.
+### `build-windows-msys.sh`
 
-This will generate `configure` script.
+There is a shell script prepared for building OpenOCD named `build-windows-msys.sh`.
+Make necessary changes to it and run it, alternatively, run each step in that
+script manually.
 
-### `build.sh`
+## MacOS
 
-There is a shell script prepared for building OpenOCD named `build.sh`.
+Ensure you have latest and greatest x-code tools installed. Xcode
+should not be required.
+
+`brew install libusb`
+
+### `build-macos.sh`
+
+There is a shell script prepared for building OpenOCD named `build-macos.sh`.
 Make necessary changes to it and run it, alternatively, run each step in that
 script manually.
 
