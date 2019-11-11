@@ -43,7 +43,7 @@ script manually.
 The `./configure` script will try to find the required libs. Some might be
 installed with brew, for example:
 
-`brew install libusb`
+`brew install libusb libusb-compat libftdi hidapi`
 
 # Welcome to OpenOCD!
 
